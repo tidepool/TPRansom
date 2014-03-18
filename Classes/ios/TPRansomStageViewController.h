@@ -11,8 +11,10 @@
 
 @interface TPRansomStageViewController : TPStageViewController
 
-@property (nonatomic, assign) int numberOfCirclesRows;
-@property (nonatomic, assign) int numberOfCirclesColumns;
-@property (nonatomic, assign) int numberOfCorrectCircles;
+@property (nonatomic, assign) int numberOfRows;
+@property (nonatomic, assign) int numberOfColumns;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+@property (weak, nonatomic) IBOutlet UIView *buttonContainer;
 
 @end

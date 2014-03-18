@@ -9,11 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TPDesignHelper.h"
 
-@interface TPCircleView : UIView
+@interface TPLetterView : UIImageView
 
-@property (assign, nonatomic) BOOL selected;
-
--(void)flipToShowSelection;
+@property (strong, nonatomic) NSString *letter;
 
 -(void)buildInBounce;
 -(void)buildOutBounce;

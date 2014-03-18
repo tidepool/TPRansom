@@ -57,13 +57,15 @@
 -(void)configureStage:(TPStageViewController *)stage forLevel:(int)level
 {
     TPRansomStageViewController *codebreakerStageVC = (TPRansomStageViewController *)stage;
-    codebreakerStageVC.numberOfCirclesRows = 2 + (level+2) / 4;
-    codebreakerStageVC.numberOfCirclesColumns = 2 + (level) / 4;
-    codebreakerStageVC.numberOfCorrectCircles = level + 1;
-    
+    codebreakerStageVC.numberOfRows = 2 + (level+2) / 4;
+    codebreakerStageVC.numberOfColumns = 2 + (level) / 4;
+
+    codebreakerStageVC.numberOfRows = 5;
+    codebreakerStageVC.numberOfColumns = 10;
+
     self.levelLabel.text = [NSString stringWithFormat:@"%i", level];
     self.informationTitleLabel.text = @"CIRCLES:";
-    self.informationValueLabel.text = [NSString stringWithFormat:@"%i", codebreakerStageVC.numberOfCorrectCircles];
+    self.informationValueLabel.text = [NSString stringWithFormat:@"%i", 2];
 }
 
 -(void)configureResult:(TPResultViewController *)result
