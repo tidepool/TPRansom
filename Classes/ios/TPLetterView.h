@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "TPDesignHelper.h"
 
-@interface TPLetterView : UIImageView
+@interface TPLetterView : UIView
 
 @property (strong, nonatomic) NSString *letter;
+@property (assign, nonatomic) BOOL isPartOfWord;
+@property (strong, nonatomic) UIImage *image;
 
 -(void)buildInBounce;
 -(void)buildOutBounce;

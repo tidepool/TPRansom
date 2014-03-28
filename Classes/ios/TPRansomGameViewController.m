@@ -61,7 +61,7 @@
     codebreakerStageVC.numberOfColumns = 2 + (level) / 4;
 
     codebreakerStageVC.numberOfRows = 5;
-    codebreakerStageVC.numberOfColumns = 10;
+    codebreakerStageVC.numberOfColumns = 5;
 
     self.levelLabel.text = [NSString stringWithFormat:@"%i", level];
     self.informationTitleLabel.text = @"CIRCLES:";

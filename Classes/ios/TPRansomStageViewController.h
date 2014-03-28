@@ -13,8 +13,8 @@
 
 @property (nonatomic, assign) int numberOfRows;
 @property (nonatomic, assign) int numberOfColumns;
-@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-@property (weak, nonatomic) IBOutlet UIButton *submitButton;
-@property (weak, nonatomic) IBOutlet UIView *buttonContainer;
-
+@property (strong, nonatomic) UIButton *cancelButton;
+@property (strong, nonatomic) UIButton *submitButton;
+@property (strong, nonatomic) UIView *buttonContainer;
+@property (weak, nonatomic) IBOutlet id<UIApplicationDelegate> appDelegate;
 @end
