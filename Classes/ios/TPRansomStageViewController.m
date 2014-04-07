@@ -8,7 +8,7 @@
 
 #import "TPRansomStageViewController.h"
 #import "TPLetterView.h"
-#import "TPButton.h"
+#import "TPFontButton.h"
 
 @interface TPRansomStageViewController ()
 {
@@ -88,14 +88,14 @@
   [self.appDelegate.window addSubview:self.buttonContainer];
 
   float statusBarOffset = 20;
-  self.cancelButton = [[TPButton alloc] initWithFrame:CGRectMake(0, statusBarOffset, 160, self.buttonContainer.frame.size.height-statusBarOffset)];
+  self.cancelButton = [[TPFontButton alloc] initWithFrame:CGRectMake(0, statusBarOffset, 160, self.buttonContainer.frame.size.height-statusBarOffset)];
   [self.cancelButton setTitle:@"CLEAR ALL" forState:UIControlStateNormal];
   [self.cancelButton addTarget:self action:@selector(clearLetters) forControlEvents:UIControlEventTouchUpInside];
   [self.buttonContainer addSubview:self.cancelButton];
 
   float submitButtonHeight = 50;
   float submitButtonWidth = 120;
-  self.submitButton = [[TPButton alloc] initWithFrame:CGRectMake(160 + (160 - submitButtonWidth) / 2,statusBarOffset + (self.buttonContainer.frame.size.height - statusBarOffset - submitButtonHeight)/2, submitButtonWidth, submitButtonHeight)];
+  self.submitButton = [[TPFontButton alloc] initWithFrame:CGRectMake(160 + (160 - submitButtonWidth) / 2,statusBarOffset + (self.buttonContainer.frame.size.height - statusBarOffset - submitButtonHeight)/2, submitButtonWidth, submitButtonHeight)];
   [self.submitButton setTitle:@"SUBMIT" forState:UIControlStateNormal];
   self.submitButton.backgroundColor = [UIColor whiteColor];
   self.submitButton.titleLabel.textColor = self.buttonContainer.backgroundColor;
@@ -106,9 +106,9 @@
 }
 -(void)clearLetters
 {
-  for (int i=_chosenLetters.count-1;i>=0;i--) {
+  for (int i=(int)_chosenLetters.count-1;i>=0;i--) {
     TPLetterView *letter = _chosenLetters[i];
-    [self moveLetterBackToGrid:letter];
+    [self moveLetterBetweenGridAndChosenWord:letter];
   }
   [self refreshChosenLetters];
 }
@@ -124,7 +124,7 @@
   BOOL isValid = isWord && isNewWord;
   [self showResultGraphicCorrect:isValid];
   if (isValid) {
-    self.gameVC.score +=  submittedWord.length * ([self scrabbleScore:submittedWord]);
+    self.gameVC.score +=  (int)submittedWord.length * ([self scrabbleScore:submittedWord]);
     [self clearLetters];
     [_submittedWords addObject:submittedWord];
   }
@@ -179,10 +179,10 @@
 -(void)handleTap:(UITapGestureRecognizer *)sender
 {
   TPLetterView *letter = (TPLetterView *)sender.view;
-  [self moveLetterBackToGrid:letter];
+  [self moveLetterBetweenGridAndChosenWord:letter];
 }
 
--(void)moveLetterBackToGrid:(TPLetterView *)letter
+-(void)moveLetterBetweenGridAndChosenWord:(TPLetterView *)letter
 {
   if ([_chosenLetters containsObject:letter]) {
     letter.isPartOfWord = NO;
@@ -231,24 +231,6 @@
   return randomString;
 }
 
-
-//-(void)touchedCircle:(TPLetterView *)circle
-//{
-//    if (!circle.userInteractionEnabled)
-//        return;
-//    int index = (int)[_letters indexOfObject:circle];
-//    if ([_chosenIndices containsObject:[NSNumber numberWithInt:index]]) {
-//        circle.userInteractionEnabled = NO;
-//        [_chosenIndices removeObject:[NSNumber numberWithInt:index]];
-//        if (![_chosenIndices count]) {
-//            [self showResultGraphicCorrect:YES];
-//            [self buildOutAndProceed:YES];
-//        }
-//    } else {
-//        [self showResultGraphicCorrect:NO];
-//        [self buildOutAndProceed:NO];
-//    }
-//}
 
 -(void)buildOutAndProceed:(BOOL)proceed
 {
@@ -306,5 +288,17 @@
 {
   [super didReceiveMemoryWarning];
 }
+
+
+-(void)pauseStage
+{
+  
+}
+
+-(void)resumeStage
+{
+  
+}
+
 
 @end

@@ -70,7 +70,9 @@
 
 -(void)configureResult:(TPResultViewController *)result
 {
-    result.backgroundImageView.image = [UIImage imageNamed:@"codebreakerbg-blur.jpg"];
+  NSString *game = @"ransom";
+    result.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@bg-blur.jpg", game]];
+    result.gameNameLabel.text = [game uppercaseString];
     result.totalScoreLabel.text = [NSString stringWithFormat:@"%i", self.score + self.bonusScore];
     result.informationTitleLabel.text = @"CIRCLES";
 //    result.informationValueLabel.text = self.ci
