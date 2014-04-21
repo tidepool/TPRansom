@@ -68,15 +68,17 @@
     self.informationValueLabel.text = [NSString stringWithFormat:@"%i", 2];
 }
 
--(void)configureResult:(TPResultViewController *)result
-{
-  NSString *game = @"ransom";
-    result.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@bg-blur.jpg", game]];
-//    result.gameNameLabel.text = [game uppercaseString];
-    result.totalScoreLabel.text = [NSString stringWithFormat:@"%i", self.score + self.bonusScore];
-    result.bonusScoreLabel.text = [NSString stringWithFormat:@"%i", self.bonusScore];
-    result.levelLabel.text = [NSString stringWithFormat:@"%i", self.level];
-    result.levelScoreLabel.text = [NSString stringWithFormat:@"%i", self.score];
-}
-
+//-(TPGameResult *)finalGameResult
+//{
+//  TPGameResult *result = [TPGameResult gameResultWithGameName:@"" withBlock:^(TPGameResult *gameResult) {
+//  }];
+//  NSString *game = @"ransom";
+//    result.backgroundImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@bg-blur.jpg", game]];
+////    result.gameNameLabel.text = [game uppercaseString];
+//    result.totalScoreLabel.text = [NSString stringWithFormat:@"%i", self.score + self.bonusScore];
+//    result.bonusScoreLabel.text = [NSString stringWithFormat:@"%i", self.bonusScore];
+//    result.levelLabel.text = [NSString stringWithFormat:@"%i", self.level];
+//    result.levelScoreLabel.text = [NSString stringWithFormat:@"%i", self.score];
+//}
+//
 @end
