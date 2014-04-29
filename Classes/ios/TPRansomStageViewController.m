@@ -122,7 +122,7 @@
   BOOL isWord = [self isDictionaryWord:submittedWord];
   BOOL isNewWord = ![_submittedWords containsObject:submittedWord];
   BOOL isValid = isWord && isNewWord;
-  [self showResultGraphicCorrect:isValid];
+  [self showGraphicForResultCorrect:isValid];
   if (isValid) {
     self.gameVC.score +=  (int)submittedWord.length * ([self scrabbleScore:submittedWord]);
     [self clearLetters];
